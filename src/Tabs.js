@@ -8,11 +8,13 @@ import tab2 from "./tab2.svg";
 function Tabs() {
 
   //reset
-  const initA = () => {
-    setLabelLength(0)
-    setMaxRollDiameter(0)
-    setCoreOutsideDiameter(0)
-    setRibbonThickness(0)
+  const initA = (e) => {
+    // 避免送出表單去觸發你 submit 綁定的 calcLabelLength
+    e.preventDefault()
+    setLabelLength("")
+    setMaxRollDiameter("")
+    setCoreOutsideDiameter("")
+    setRibbonThickness("")
     setInfo("")
   };
 
@@ -51,9 +53,10 @@ function Tabs() {
   const calcLabelLength = (event) => {
     event.preventDefault();
     if (
-      maxRollDiameter < 0 ||
-      coreOutsideDiameter < 0||
-      RibbonThinkness < 0
+        // 改成空字串時這裡進來要判斷是否為空字串 , 否則會運算失敗
+      maxRollDiameter < 0 || !Number(maxRollDiameter) ||
+      coreOutsideDiameter < 0||  !Number(coreOutsideDiameter) ||
+      RibbonThinkness < 0 || !Number(RibbonThinkness)
     ) {
       alert("Please enter a valid number");
     } else {
@@ -142,10 +145,10 @@ function Tabs() {
               <button className="btn" type="submit">
                 Submit
               </button>
+              {/* reset 不用放submit , 你只有 submit去綁定 submit而已  */}
               <button
                 className="btn btn-outline"
                 onClick={initA}
-                type="submit"
               >
                 Reset
               </button>
