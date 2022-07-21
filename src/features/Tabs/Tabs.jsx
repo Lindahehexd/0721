@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './Tabs.css'
+import '../../styles/Tabs.css'
 import logo from '../../svgs/logo.svg'
 import { MediaLengthCalculator } from './components/MediaLengthCaculator'
 import { LabelCalculator } from './components/LabelCalculator'
