@@ -4,7 +4,7 @@ import logo from '../../svgs/logo.svg'
 import { MediaLengthCalculator } from './components/MediaLengthCaculator'
 import { LabelCalculator } from './components/LabelCalculator'
 
-function Tabs() {
+const Tabs = () => {
 	//toggle state
 	const [toggleState, setToggleState] = useState(1)
 	const toggleTab = index => {
